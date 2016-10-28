@@ -31,6 +31,6 @@ export class AuthService {
   redirectAfterLogin(): void {
     let redirectTo = this.redirectUrl ? this.redirectUrl : '/';
     this.redirectUrl = undefined;
-    this.router.navigate([redirectTo]);   
+    this.router.navigate([redirectTo]);
   }
 }

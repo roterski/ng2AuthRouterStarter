@@ -1,4 +1,4 @@
-import { ErrorMessagesPipe } from '../../app/shared/error-messages.pipe.ts';
+import { ErrorMessagesPipe } from './error-messages.pipe.ts';
 
 describe('ErrorMessagesPipe', () => {
   let pipe = new ErrorMessagesPipe;

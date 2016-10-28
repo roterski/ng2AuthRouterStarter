@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { AuthService }    from './auth.service';
 
 @Component({
-  selector: 'auth-links',
+  selector: 'app-auth-links',
   template: `
     <a routerLink="/log-in" routerLinkActive="active" *ngIf="isLoggedOut()">Log In</a>
     <a routerLink="/sign-up" routerLinkActive="active" *ngIf="isLoggedOut()">Sign Up</a>
     <a (click)="logOut()" *ngIf="isLoggedIn()">Log Out</a>
   `
 })
-export class AuthLinks {
+export class AuthLinksComponent {
   constructor(private authService: AuthService) {}
 
   isLoggedIn(): boolean {

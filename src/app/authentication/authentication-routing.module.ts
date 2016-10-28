@@ -20,7 +20,7 @@ import { SignUpComponent }         from './sign-up/sign-up.component';
           { path: 'sign-up', component: SignUpComponent },
           { path: 'signup', redirectTo: '/sign-up' }
         ]
-      }      
+      }
     ])
   ],
   exports: [

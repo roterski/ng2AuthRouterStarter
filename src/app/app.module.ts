@@ -12,7 +12,7 @@ import { AppRoutingModule }     from './app-routing.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule }         from './shared/shared.module';
 
-import { AuthLinks } from './authentication/auth-links.component';
+import { AuthLinksComponent } from './authentication/auth-links.component';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import { AuthLinks } from './authentication/auth-links.component';
   ],
   declarations: [
     AppComponent,
-    AuthLinks
+    AuthLinksComponent
   ],
   providers: [
     Angular2TokenService
