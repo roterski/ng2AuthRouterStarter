@@ -1,9 +1,12 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
-import { InputFieldComponent } from "./input-field.component";
+import { NgModule }            from '@angular/core';
+import { BrowserModule }       from '@angular/platform-browser';
+import { FormsModule,
+         ReactiveFormsModule } from '@angular/forms';
+
+import { InputFieldComponent } from './input-field.component';
 import { ErrorLabelComponent } from './error-label.component';
-import { ErrorMessagesPipe } from './error-messages.pipe';
+
+import { ErrorMessagesPipe }   from './error-messages.pipe';
 
 @NgModule({
     declarations: [

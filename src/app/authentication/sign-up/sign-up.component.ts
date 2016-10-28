@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {  
-  FormBuilder,  
+import {
+  FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
 
   submit(value: any) {
     this.submitted = true;
-    if(!this.signupForm.valid) { return; }
+    if (!this.signupForm.valid) { return; }
 
     this.authService.signUp(value.email, value.password).subscribe(
       this.authService.redirectAfterLogin.bind(this.authService),

@@ -4,7 +4,7 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'error-label',
+  selector: 'app-error-label',
   template: `
     <div *ngIf="control.errors && (submitted || control.dirty || control.touched)" class="alert alert-danger">
       <ng-content></ng-content>

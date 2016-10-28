@@ -1,6 +1,6 @@
 import { Component, OnInit }        from '@angular/core';
-import {  
-  FormBuilder,  
+import {
+  FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   submit(value: any) {
     this.submitted = true;
-    if(!this.loginForm.valid) { return; }
+    if (!this.loginForm.valid) { return; }
 
     this.authService.logIn(value.email, value.password).subscribe(
       this.authService.redirectAfterLogin.bind(this.authService),

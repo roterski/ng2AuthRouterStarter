@@ -4,14 +4,14 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'input-field',
+  selector: 'app-input-field',
   template: `
     <div>
       <label [attr.for]=attribute>{{attribute}}</label>
       <input id={{attribute}} type={{type}} [formControl]="control">
-      <error-label [control]="control" [submitted]="submitted">
+      <app-error-label [control]="control" [submitted]="submitted">
         {{ control.errors | errorMessages }}
-      </error-label>
+      </app-error-label>
     </div>
   `
 })
