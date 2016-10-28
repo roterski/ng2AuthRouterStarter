@@ -9,20 +9,22 @@ import { Angular2TokenService } from 'angular2-token';
 import { AppComponent }         from './app.component';
 import { AppRoutingModule }     from './app-routing.module';
 
-import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule }         from './shared/shared.module';
+import { HomeModule }           from './home/home.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 import { AuthLinksComponent } from './authentication/auth-links.component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthenticationModule,
+    Http,
     AppRoutingModule,
-    Http
+    SharedModule,
+    HomeModule,
+    AuthenticationModule
   ],
   declarations: [
     AppComponent,
