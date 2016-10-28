@@ -1,0 +1,17 @@
+<form [formGroup]="signupForm" (ngSubmit)="submit(signupForm.value)">
+  <error-label [control]="signupForm" [submitted]="submitted">
+    {{ signupForm.errors }}
+  </error-label>
+  <input-field [attribute]="'email'"
+               [type]="'email'"
+               [control]="signupForm.controls['email']"
+               [submitted]="submitted">
+  </input-field>
+
+  <input-field [attribute]="'password'"
+               [type]="'password'"
+               [control]="signupForm.controls['password']"
+               [submitted]="submitted">
+  </input-field>
+  <button type="submit">Submit</button>  
+</form>
