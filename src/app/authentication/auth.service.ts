@@ -22,6 +22,7 @@ export class AuthService {
   logOut(): void {
     this.redirectUrl = undefined;
     this.tokenService.signOut();
+    this.router.navigate(['/']);
   }
 
   isLoggedIn(): boolean {

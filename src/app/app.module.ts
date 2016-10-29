@@ -10,8 +10,8 @@ import { AppComponent }         from './app.component';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { SharedModule }         from './shared/shared.module';
-import { HomeModule }           from './home/home.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { HomeModule }           from './home/home.module';
 
 import { AuthLinksComponent } from './authentication/auth-links.component';
 
@@ -23,8 +23,8 @@ import { AuthLinksComponent } from './authentication/auth-links.component';
     Http,
     AppRoutingModule,
     SharedModule,
-    HomeModule,
-    AuthenticationModule
+    AuthenticationModule,
+    HomeModule
   ],
   declarations: [
     AppComponent,
