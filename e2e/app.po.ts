@@ -29,6 +29,18 @@ export class ChangeMyNamePage {
     return element(by.buttonText('Submit'));
   }
 
+  emailFieldErrors() {
+    return element(by.css('input#email ~ app-error-label div'));
+  }
+
+  passwordFieldErrors() {
+    return element(by.css('input#password ~ app-error-label div'));
+  }
+
+  formErrors() {
+    return element(by.css('form app-error-label div'));
+  }
+
   authenticate(user: User) {
     browser.get('/log-in');
     this.emailInputField().sendKeys(user.email);
