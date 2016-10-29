@@ -25,7 +25,7 @@ describe('Authentication: Logging In', () => {
 
     it('I should not be able to go to account page', () => {
       browser.get('/account');
-      expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/log-in');
+      expect(browser.getCurrentUrl()).toEqual(`${page.host}/log-in`);
     });
 
     describe('and when I click log in link', () => {
@@ -42,7 +42,7 @@ describe('Authentication: Logging In', () => {
       });
 
       it('I should be on login page', () => {
-        expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/log-in');
+        expect(browser.getCurrentUrl()).toEqual(`${page.host}/log-in`);
       });
 
       describe('and when I fill in email and password and submit', () => {
@@ -61,13 +61,13 @@ describe('Authentication: Logging In', () => {
         });
 
         it('I should be redirected to root', () => {
-          expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/');
+          expect(browser.getCurrentUrl()).toEqual(`${page.host}/`);
         });
 
         it('I should be able to go to account page', () => {
           browser.waitForAngular();
           browser.get('/account');
-          expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/account');
+          expect(browser.getCurrentUrl()).toEqual(`${page.host}/account`);
         });
       });
     });

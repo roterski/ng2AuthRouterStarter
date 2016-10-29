@@ -1,9 +1,9 @@
 import { browser, element, by } from 'protractor';
 
+import { User } from './stubs/user';
+
 export class ChangeMyNamePage {
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
-  }
+  public host: string = 'http://localhost:4200';
 
   loginLink() {
     return element(by.linkText('Log In'));
@@ -27,5 +27,12 @@ export class ChangeMyNamePage {
 
   submitButton() {
     return element(by.buttonText('Submit'));
+  }
+
+  authenticate(user: User) {
+    browser.get('/log-in');
+    this.emailInputField().sendKeys(user.email);
+    this.passwordInputField().sendKeys(user.password);
+    this.submitButton().click();
   }
 }
