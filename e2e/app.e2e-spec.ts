@@ -1,3 +1,5 @@
+import { browser } from 'protractor';
+
 import { ChangeMyNamePage } from './app.po';
 
 describe('ChangeMyName App', function() {
@@ -8,7 +10,7 @@ describe('ChangeMyName App', function() {
   });
 
   it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    browser.get('/');
+    expect(page.getParagraphText()).toEqual('ChangeMyName');
   });
 });
