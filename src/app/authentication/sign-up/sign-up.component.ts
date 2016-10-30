@@ -36,6 +36,11 @@ export class SignUpComponent implements OnInit {
 
   afterFailedLogin(errors: any) {
     let parsed_errors = JSON.parse(errors._body).errors;
+    for(let attribute in this.signupForm.controls) {
+      if (parsed_errors[attribute]) {
+        this.signupForm.controls[attribute].setErrors(parsed_errors[attribute]);
+      }
+    }
     this.signupForm.setErrors(parsed_errors);
   }
 }

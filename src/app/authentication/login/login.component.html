@@ -1,8 +1,6 @@
 <h2>Log In</h2>
 <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
-  <app-error-label [control]="loginForm" [submitted]="submitted">
-    {{ loginForm.errors }}
-  </app-error-label>
+  <app-error-label [control]="loginForm" [submitted]="submitted"></app-error-label>
   <app-input-field [attribute]="'email'"
                [type]="'email'"
                [control]="loginForm.controls['email']"

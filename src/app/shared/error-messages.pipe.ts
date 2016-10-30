@@ -2,39 +2,50 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'errorMessages' })
 export class ErrorMessagesPipe implements PipeTransform {
-  transform(value: Object): string {
-    if (!value) { return; }
+  transform(value: Object): Array<string> {
+    if (Array.isArray(value)) { return value; }
+
+    return this.parseErrorObject(value);
+  }
+
+  private parseErrorObject(value: Object): Array<string> {
     let errors = [];
-
-    if (value['pattern']) {
-      errors.push(this.patternError(value));
+    for (let key in value) {
+      if (this.knownErrors()[key]) {
+        let error_messages = this.knownErrors()[key].call(this, value[key]);
+        errors = errors.concat(error_messages);
+      }
     }
-    if (value['minlength']) {
-      errors.push(this.minLengthError(value));
-    }
-    if (value['maxlength']) {
-      errors.push(this.maxLengthError(value));
-    }
-    if (value['required']) {
-      errors.push(this.requiredError(value));
-    }
-
-    return errors.join(', ');
+    return errors;
   }
 
-  private patternError(value): string {
-    return `must match /${value['pattern']['requiredPattern']}/ pattern`;
+  private knownErrors(): Object {
+    return {
+      'pattern': this.patternError,
+      'minlength': this.minLengthError,
+      'maxlength': this.maxLengthError,
+      'required': this.requiredError,
+      'full_messages': this.fullMessages
+    };
   }
 
-  private maxLengthError(value): string {
-    return `must be shorter than ${value['maxlength']['requiredLength'] + 1}`;
+  private patternError(error): string {
+    return `must match /${error['requiredPattern']}/ pattern`;
   }
 
-  private minLengthError(value): string {
-    return `must be longer than ${value['minlength']['requiredLength'] - 1}`;
+  private maxLengthError(error): string {
+    return `must be shorter than ${error['requiredLength'] + 1}`;
   }
 
-  private requiredError(value): string {
+  private minLengthError(error): string {
+    return `must be longer than ${error['requiredLength'] - 1}`;
+  }
+
+  private requiredError(_error): string {
     return 'is required';
+  }
+
+  private fullMessages(error): Array<string> {
+    return error;
   }
 }

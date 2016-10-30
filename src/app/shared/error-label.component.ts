@@ -7,7 +7,9 @@ import {
   selector: 'app-error-label',
   template: `
     <div *ngIf="control.errors && (submitted || control.dirty || control.touched)" class="alert alert-danger">
-      <ng-content></ng-content>
+      <div *ngFor="let error of (control.errors | errorMessages)">
+        {{ error }}
+      </div>
     </div>
   `
 })

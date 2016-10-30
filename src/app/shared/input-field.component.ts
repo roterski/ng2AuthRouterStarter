@@ -9,9 +9,7 @@ import {
     <div>
       <label [attr.for]=attribute>{{attribute}}</label>
       <input id={{attribute}} type={{type}} [formControl]="control">
-      <app-error-label [control]="control" [submitted]="submitted">
-        {{ control.errors | errorMessages }}
-      </app-error-label>
+      <app-error-label [control]="control" [submitted]="submitted"></app-error-label>
     </div>
   `
 })
