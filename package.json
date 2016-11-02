@@ -29,6 +29,7 @@
   "devDependencies": {
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
+    "@types/node-uuid": "0.0.28",
     "angular-cli": "1.0.0-beta.17",
     "codelyzer": "~0.0.26",
     "jasmine-core": "2.4.1",
@@ -38,6 +39,7 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
+    "node-uuid": "^1.4.7",
     "protractor": "4.0.9",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",

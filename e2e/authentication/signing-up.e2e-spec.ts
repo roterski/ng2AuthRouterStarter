@@ -1,9 +1,9 @@
 import { browser } from 'protractor';
 
 import { ChangeMyNamePage } from '../app.po';
-import { TestUser } from '../fixtures/users';
+import { TestUser, generateNewTestUser } from '../fixtures/users';
 
-describe('Authentication: Logging In', () => {
+describe('Authentication: Signing Up', () => {
   let page: ChangeMyNamePage;
 
   beforeEach(() => {
@@ -16,8 +16,8 @@ describe('Authentication: Logging In', () => {
         browser.get('/');
       });
 
-      it('I should see log in link', () => {
-        expect(page.loginLink().isPresent()).toEqual(true);
+      it('I should see sign up link', () => {
+        expect(page.signupLink().isPresent()).toEqual(true);
       });
 
       it('I should not be able to go to account page', () => {
@@ -25,9 +25,9 @@ describe('Authentication: Logging In', () => {
         expect(browser.getCurrentUrl()).toEqual(`${page.host}/log-in`);
       });
 
-      describe('and when I click log in link', () => {
+      describe('and when I click sign up link', () => {
         beforeEach(() => {
-          page.loginLink().click();
+          page.signupLink().click();
         });
 
         it('I should see email input field', () => {
@@ -38,14 +38,15 @@ describe('Authentication: Logging In', () => {
           expect(page.passwordInputField().isPresent()).toEqual(true);
         });
 
-        it('I should be on login page', () => {
-          expect(browser.getCurrentUrl()).toEqual(`${page.host}/log-in`);
+        it('I should be on sign up page', () => {
+          expect(browser.getCurrentUrl()).toEqual(`${page.host}/sign-up`);
         });
 
         describe('and when I fill in email and password and submit', () => {
           beforeEach(() => {
-            page.emailInputField().sendKeys(TestUser.email);
-            page.passwordInputField().sendKeys(TestUser.password);
+            let testUser = generateNewTestUser();
+            page.emailInputField().sendKeys(testUser.email);
+            page.passwordInputField().sendKeys(testUser.password);
             page.submitButton().click();
           });
 
@@ -72,9 +73,9 @@ describe('Authentication: Logging In', () => {
   });
 
   describe('unsuccessfully', () => {
-    describe('when I navigate to log-in form', () => {
+    describe('when I navigate to sign up form', () => {
       beforeEach(() => {
-        browser.get('/log-in');
+        browser.get('/sign-up');
       });
 
       describe('when I leave input fields empty', () => {
@@ -93,25 +94,34 @@ describe('Authentication: Logging In', () => {
 
       describe('when password is incorrect', () => {
         beforeEach(() => {
-          page.emailInputField().sendKeys(TestUser.email);
-          page.passwordInputField().sendKeys(TestUser.password + 'a');
+          let testUser = generateNewTestUser();
+          page.emailInputField().sendKeys(testUser.email);
+          page.passwordInputField().sendKeys('a');
           page.submitButton().click();
         });
 
-        it('I should see invalid credentials error', () => {
-          expect(page.formErrors().getText()).toEqual('Invalid login credentials. Please try again.');
+        it('I should see form error about password', () => {
+          expect(page.formErrors().getText()).toEqual('Password is too short (minimum is 8 characters)');
+        });
+
+        it('I should see password is too short error message', () => {
+          expect(page.passwordFieldErrors().getText()).toEqual('is too short (minimum is 8 characters)');
         });
       });
 
       describe('when email is incorrect', () => {
         beforeEach(() => {
-          page.emailInputField().sendKeys(TestUser.email + 'a');
+          page.emailInputField().sendKeys('test@bad.email.adr3ss');
           page.passwordInputField().sendKeys(TestUser.password);
           page.submitButton().click();
         });
 
-        it('I should see invalid credentials error', () => {
-          expect(page.formErrors().getText()).toEqual('Invalid login credentials. Please try again.');
+        it('I should see form error about email', () => {
+          expect(page.formErrors().getText()).toEqual('Email is not an email');
+        });
+
+        it('I should see email is incorrect', () => {
+          expect(page.emailFieldErrors().getText()).toEqual('is not an email');
         });
       });
     });

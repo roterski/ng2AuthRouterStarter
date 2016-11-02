@@ -30,15 +30,15 @@ export class ChangeMyNamePage {
   }
 
   emailFieldErrors() {
-    return element(by.css('input#email ~ app-error-label div'));
+    return element(by.css('input#email ~ app-error-label div div'));
   }
 
   passwordFieldErrors() {
-    return element(by.css('input#password ~ app-error-label div'));
+    return element(by.css('input#password ~ app-error-label div div'));
   }
 
   formErrors() {
-    return element(by.css('form app-error-label div'));
+    return element(by.css('form app-error-label div div'));
   }
 
   authenticate(user: User) {
