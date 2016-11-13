@@ -19,6 +19,15 @@ export class AuthService {
     return this.tokenService.registerAccount(email, password, password);
   }
 
+  signInWithGithub(): void {
+    this.tokenService.signInOAuth('github');
+  }
+
+  proccessOauthCallback(): void {
+    this.tokenService.processOAuthCallback();
+    this.redirectAfterLogin();
+  }
+
   logOut(): void {
     this.redirectUrl = undefined;
     this.tokenService.signOut();

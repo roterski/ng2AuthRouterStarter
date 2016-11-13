@@ -7,6 +7,7 @@ import { AuthService }    from './auth.service';
 
 import { LoginComponent }          from './login/login.component';
 import { SignUpComponent }         from './sign-up/sign-up.component';
+import { OauthCallbackComponent }  from './oauth-callback.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SignUpComponent }         from './sign-up/sign-up.component';
           { path: 'sign-up', component: SignUpComponent },
           { path: 'signup', redirectTo: '/sign-up' }
         ]
-      }
+      },
+      { path: 'oauth_callback', component: OauthCallbackComponent }
     ])
   ],
   exports: [

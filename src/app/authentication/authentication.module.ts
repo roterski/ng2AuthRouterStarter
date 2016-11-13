@@ -7,6 +7,7 @@ import { SharedModule }                from '../shared/shared.module';
 
 import { LoginComponent }  from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { OauthCallbackComponent }  from './oauth-callback.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   ],
   declarations: [
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    OauthCallbackComponent
   ],
   providers: [
   ]
