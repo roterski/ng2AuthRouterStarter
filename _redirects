@@ -1,0 +1,4 @@
+/api/*      https://ng2ars-api.herokuapp.com/:splat  200
+/auth/*     https://ng2ars-api.herokuapp.com/auth/:splat 200
+/omniauth/* https://ng2ars-api.herokuapp.com/omniauth/:splat 200
+/*          /index.html   200
