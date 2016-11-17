@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGithub() {
-    this.authService.signInWithGithub();
+     this.authService.signInWithGithub().subscribe(
+        this.authService.redirectAfterLogin.bind(this.authService),
+        this.afterFailedLogin.bind(this)
+     );
   }
 
   afterFailedLogin(errors: any) {

@@ -19,8 +19,8 @@ export class AuthService {
     return this.tokenService.registerAccount(email, password, password);
   }
 
-  signInWithGithub(): void {
-    this.tokenService.signInOAuth('github');
+  signInWithGithub(): Observable<any> {
+    return this.tokenService.signInOAuth('github');
   }
 
   proccessOauthCallback(): void {
