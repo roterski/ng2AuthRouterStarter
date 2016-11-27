@@ -12,11 +12,14 @@ export class AuthService {
   constructor(private tokenService: Angular2TokenService, public router: Router) {}
 
   logIn(email: string, password: string): Observable<Response> {
-    return this.tokenService.signIn(email, password);
+    return this.tokenService.signIn({ email: email,
+                                     password: password });
   }
 
   signUp(email: string, password: string): Observable<Response> {
-    return this.tokenService.registerAccount(email, password, password);
+    return this.tokenService.registerAccount({ email: email,
+                                               password: password,
+                                               passwordConfirmation: password });
   }
 
   signInWithGithub(): Observable<any> {

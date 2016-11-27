@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   afterFailedLogin(errors: any) {
     let parsed_errors = JSON.parse(errors._body).errors;
-    for(let attribute in this.loginForm.controls) {
+    for (let attribute in this.loginForm.controls) {
       if (parsed_errors[attribute]) {
         this.loginForm.controls[attribute].setErrors(parsed_errors[attribute]);
       }
